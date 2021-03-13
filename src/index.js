@@ -1,13 +1,21 @@
-import home from './home';
 import express from 'express';
-import info from './info';
-import errorHandler from './errorHandler';
+import errorHandler from './modules/core/errorHandler';
+import logger from './modules/core/logger';
+import parser from './modules/core/bodyParser';
+import cors from './modules/core/cors';
+import routes from './modules/core/routes';
 
 const app = express();
 const PORT = 5000;
 
-app.get('/', home);
-app.post('/info', info);
+logger(app);
+parser(app);
+cors(app);
+routes(app);
+
+// app.get('/', home);
+// app.post('/info', info);
+
 errorHandler(app);
 
 app.listen(PORT, () => {
