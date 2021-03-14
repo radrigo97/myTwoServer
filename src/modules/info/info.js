@@ -1,4 +1,5 @@
-let count = 0;
+let name = [];
 export default function info(req, res) {
-  res.status(200).json('Hello' + count++);
+  name.push(req.body.name);
+  res.status(200).json(name);
 }
